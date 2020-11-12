@@ -9,10 +9,33 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true
+    },
+    icon: __dirname + '/img/logo.png',
     width: 800,
-    height: 600,
-    icon: __dirname + '/img/logo.png'
+    height: 600
   });
+
+/*  var menu = Menu.buildFromTemplate([
+    {
+      label: 'Menu',
+      submenu: [
+        {
+          label:'Help', 
+          click() { 
+            shell.openExternal('http://aceius.rf.gd/Docs');
+          accelerator: 'CmdOrCtrl+Shift+3'
+        },
+        {
+          label:'Exit', 
+          click() { 
+              app.quit() 
+        } 
+      ]
+    }
+  ])
+  Menu.setApplicationMenu(menu); */
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));

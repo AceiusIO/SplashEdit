@@ -11,3 +11,14 @@ button {
   border-radius: 5%;
   border-width: 1px;
 }
+
+#loadingGif {
+  position: absolute;
+  left: 50%;
+  height: 100px;
+}
+
+#notepad {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}

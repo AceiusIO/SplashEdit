@@ -13,11 +13,28 @@
     <div id="home">
       <h1>SplashEdit</h1>
         <h2>Welcome</h2>
-      <button id="makeNew">Create New Document</button>
+      <button id="makeNew" onclick="openEditor();">Create New Document</button>
     </div>
+
     <div id="loading">
-      <img src="img/loading.gif" alt="loading icon" />
+      <img src="img/loading.gif" alt="loading icon" id="loadingGif" />
     </div>
+
+    <div id="editor">
+      <div id="notepadControls">
+        <select id="headingControls">
+          <option value="1">Heading 1</option>
+          <option value="2">Heading 2</option>
+          <option value="3">Heading 3</option>
+          <option value="4">Heading 4</option>
+          <option value="5">Heading 5</option>
+          <option value="6">Heading 6</option>
+        </select> <button onclick="editorAddHeading();">Add Heading</button></div>
+        <hr>
+      </div>
+      <textarea id="notepad" rows="20"></textarea>
+    </div>
+
     <script src="js/main.js"></script>
   </body>
 </html>
