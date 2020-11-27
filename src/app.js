@@ -10,7 +10,8 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      nativeWindowOpen: true
     },
     icon: __dirname + '/img/logo.png',
     width: 800,

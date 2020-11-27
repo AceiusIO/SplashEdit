@@ -4,6 +4,8 @@
 // Written by AceiusIO
 
 window.$ = window.jQuery = require('jquery');
+const fs = require('fs');
+const app = require('electron');
 
 // Defs
 
@@ -28,12 +30,41 @@ function openEditor() {
 }
 
 function editorAddHeading() {
-    var $txt = jQuery("#notepad");
-    var caretPos = $txt[0].selectionStart;
-    var textAreaTxt = $txt.val();
-    var txtToAdd = "<h" + $("#headingControls").val() + ">Heading " + $("#headingControls").val() + "</h" + $("#headingControls").val() + ">"
-    $txt.val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
-    
+    let editorContent = $("#notepad");
+    let caretPos = editorContent[0].selectionStart;
+    let textAreaTxt = editorContent.val();
+    let txtToAdd = "<h" + $("#headingControls").val() + ">Heading " + $("#headingControls").val() + "</h" + $("#headingControls").val() + ">"
+    editorContent.val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+}
+
+function editorAddImage() {
+    let editorContent = $("#notepad");
+    let ImgUrl = $("#imageControls").val();
+    if (ImgUrl == 'Image URL') {
+        alert("Please enter a valid URL!")
+    }
+    let caretPos = editorContent[0].selectionStart;
+    let textAreaTxt = editorContent.val();
+    let txtToAdd = "<img " + "src=" + "'" + ImgUrl + "' />"
+    editorContent.val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+    $("#imageControls").val("Image URL");
+}
+
+function editorRender() {
+    const previewWindow = window.open("","Preview","width=300,height=300")
+    const renderContent = '<link rel="stylesheet" href="index.css" />' + $("#notepad").val();
+    previewWindow.document.write(renderContent);
+}
+
+function editorExport() {
+    const renderContent = $("#notepad").val();
+    try {
+        fs.writeFileSync('output.html', renderContent, 'utf-8');
+        alert('Saved File!')
+    }
+    catch(e) {
+        alert('Failed to save!');
+    }
 }
 
 // Main

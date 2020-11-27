@@ -4,7 +4,7 @@
     <!--HTML-->
     <meta charset="UTF-8">
     <title>SplashEdit Home</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
 
     <!--JS-->
     <script>window.$ = window.jQuery = require('jquery');</script>
@@ -29,7 +29,15 @@
           <option value="4">Heading 4</option>
           <option value="5">Heading 5</option>
           <option value="6">Heading 6</option>
-        </select> <button onclick="editorAddHeading();">Add Heading</button></div>
+        </select>
+        <button onclick="editorAddHeading();">Add Heading</button>
+
+        <input type="text" id="imageControls" value="Image URL"></input>
+        <button onclick="editorAddImage();">Add Image</button>
+
+        <button onclick="editorRender();">Preview</button>
+        <button onclick="editorExport();">Export</button>
+      </div>
         <hr>
       </div>
       <textarea id="notepad" rows="20"></textarea>
